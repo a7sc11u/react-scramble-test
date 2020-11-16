@@ -2,21 +2,16 @@ import React, { useCallback, useEffect, useState } from "react"
 import { useTweaks } from "use-tweaks"
 import { css } from "@emotion/css"
 import { LoremIpsum } from "lorem-ipsum"
-
-const lorem = new LoremIpsum({
-  sentencesPerParagraph: {
-    max: 8,
-    min: 4,
-  },
-  wordsPerSentence: {
-    max: 16,
-    min: 4,
-  },
-})
-
 import { TextScramble } from "./text-scramble"
 
 import "./styles.css"
+
+const lorem = new LoremIpsum({
+  wordsPerSentence: {
+    max: 10,
+    min: 4,
+  },
+})
 
 export default function App() {
   const [sample, setSample] = useState(lorem.generateSentences(1))
