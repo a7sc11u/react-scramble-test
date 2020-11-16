@@ -46,14 +46,14 @@ export const TextScramble = ({
   const seedRandomCharacters = () => {
     for (var i = 0; i < seed; i++) {
       const pos = getRandomInt(startCharRef.current, text.length)
-      scrambleRef.current[pos] = scrambleRef.current[pos] || scramble
+      scrambleRef.current[pos] = scrambleRef.current[pos] || 0
     }
   }
 
   const moveCharIndex = () => {
     for (var i = 0; i < step; i++) {
       const currentIndex = startCharRef.current
-      scrambleRef.current[currentIndex] = scrambleRef.current[currentIndex] || Math.floor(scramble)
+      scrambleRef.current[currentIndex] = scrambleRef.current[currentIndex] || 0
       startCharRef.current += 1
     }
   }
@@ -90,15 +90,15 @@ export const TextScramble = ({
           newString += " "
           charsDone++
           break
-        case cPos <= 0:
+        case cPos >= scramble:
           newString += text[i]
           charsDone++
           break
-        case cPos >= 0 && i <= startCharRef.current:
+        case cPos < scramble && i <= startCharRef.current:
           newString += getRandomChar()
-          scrambleRef.current[i] -= 1
+          scrambleRef.current[i] += 1
           break
-        case cPos >= 0:
+        case cPos < scramble:
           newString += getRandomChar()
           break
         default:
