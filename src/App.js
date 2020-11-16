@@ -13,8 +13,8 @@ export default function App() {
   const config = useTweaks("Config", {
     play: true,
     fontSize: { value: 20, min: 1, max: 32, step: 1 },
-    leading: { value: 1, min: 1, max: 3, step: 0.01 },
-    tracking: { value: 1, min: 0, max: 3, step: 0.01 },
+    leading: { value: 1.5, min: 0, max: 3, step: 0.01 },
+    tracking: { value: 0.6, min: -0.2, max: 3, step: 0.01 },
   })
 
   const tweaks = useTweaks("Scramble", {
@@ -41,6 +41,7 @@ export default function App() {
           {...tweaks}
           onComplete={handleComplete}
           className={css`
+            display: block;
             font-family: "Courier New", Courier, monospace;
             letter-spacing: ${config.tracking}em;
             line-height: ${config.leading};
