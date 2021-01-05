@@ -11,6 +11,9 @@
   "dependencies": {
     "@a7sc11u/scramble": "^0.0.3",
     "@emotion/css": "11.0.0",
+    "@emotion/react": "^11.1.4",
+    "@emotion/styled": "^11.0.0",
+    "@types/node": "^14.14.20",
     "lorem-ipsum": "2.0.3",
     "parcel-plugin-static-files-copy": "^2.5.0",
     "react": "^17.0.1",
