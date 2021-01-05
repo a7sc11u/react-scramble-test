@@ -2,9 +2,7 @@ import React, { useCallback, useEffect, useState } from "react"
 import { useTweaks } from "use-tweaks"
 import { css } from "@emotion/css"
 import { LoremIpsum } from "lorem-ipsum"
-import { TextScramble } from "./text-scramble"
-
-import "./styles.css"
+import { TextScramble } from "@a7sc11u/scramble"
 
 const lorem = new LoremIpsum({
   wordsPerSentence: {
@@ -13,7 +11,7 @@ const lorem = new LoremIpsum({
   },
 })
 
-export default function App() {
+export const App = () => {
   const [sample, setSample] = useState(lorem.generateSentences(1))
 
   const tweaks = useTweaks("Scramble", {
@@ -27,42 +25,44 @@ export default function App() {
   })
 
   const text = useTweaks("Text", {
-    sentences: { value: 1, min: 1, max: 10, step: 1 },
     fontSize: { value: 20, min: 1, max: 32, step: 1 },
     leading: { value: 1.5, min: 0, max: 3, step: 0.01 },
     tracking: { value: 0.6, min: -0.2, max: 3, step: 0.01 },
     measure: { value: 50, min: 25, max: 75, step: 1 },
   })
 
+  const lipsum = useTweaks("Lorem", {
+    sentences: { value: 1, min: 1, max: 10, step: 1 },
+    timeout: { value: 1000, min: 1000, max: 5000, step: 100 },
+  })
+
   const handleComplete = useCallback(() => {
     setTimeout(() => {
-      const sample = lorem.generateSentences(text.sentences)
+      const sample = lorem.generateSentences(lipsum.sentences)
       setSample(sample)
-    }, 850)
-  }, [text.sentences])
+    }, lipsum.timeout)
+  }, [lipsum.sentences, lipsum.timeout])
 
   useEffect(() => {
-    const sample = lorem.generateSentences(text.sentences)
+    const sample = lorem.generateSentences(lipsum.sentences)
     setSample(sample)
-  }, [text.sentences])
+  }, [lipsum.sentences])
 
   return (
     <div className="App">
-      <div>
-        <TextScramble
-          text={sample}
-          {...tweaks}
-          onComplete={handleComplete}
-          className={css`
-            display: block;
-            font-family: "Courier New", Courier, monospace;
-            letter-spacing: ${text.tracking}em;
-            line-height: ${text.leading};
-            max-width: ${text.measure}ch;
-            font-size: ${text.fontSize}px;
-          `}
-        />
-      </div>
+      <TextScramble
+        text={sample}
+        {...tweaks}
+        onComplete={handleComplete}
+        className={css`
+          display: block;
+          font-family: "Courier New", Courier, monospace;
+          letter-spacing: ${text.tracking}em;
+          line-height: ${text.leading};
+          max-width: ${text.measure}ch;
+          font-size: ${text.fontSize}px;
+        `}
+      />
     </div>
   )
 }
