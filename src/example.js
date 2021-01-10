@@ -48,14 +48,14 @@ export const Example = () => {
         display: flex;
         width: 100%;
         padding: 4vw 4vw 4vw 4vw;
-        @media only screen and (max-width: 600px) {
+        @media only screen and (max-width: 767px) {
           flex-direction: column;
         }
       `}>
       <div
         className={css`
           flex: 1 1 100%;
-          @media only screen and (max-width: 600px) {
+          @media only screen and (max-width: 767px) {
             order: 1;
           }
         `}>
