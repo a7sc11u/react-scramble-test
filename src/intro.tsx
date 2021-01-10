@@ -39,8 +39,8 @@ export const Intro = () => {
       <p>A scramble text UI component for react.</p>
       <p>
         The animation maintains an internal ticking clock, that runs up to 60 times per second, or once per animation frame. The animation
-        starts from the beginning of the input text, and scrambles until the end of the input, given a set of control parameters that allow
-        you to control how often characters are added, and how many times each character is randomized.
+        starts from the beginning of the text, and scrambles until the end of the input, given a set of parameters that allow you to control
+        how often characters are added, and how many times each character is randomized.
       </p>
     </section>
   )
