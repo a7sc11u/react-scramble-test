@@ -39,17 +39,57 @@
         background-color: #101010;
       }
 
+      a {
+        color: inherit;
+      }
+
       body {
         margin: 0;
         min-height: 100vh;
         word-wrap: break-word;
         font-kerning: normal;
-        font-family: system-ui, -apple-system, "Helvetica Neue", sans-serif;
-        font-size: 0.85rem;
+        font-family: "JetBrainsMono", "Courier New", Courier, monospace;
       }
 
-      .App {
-        padding: 2vw 4vw;
+      h1,
+      p {
+        letter-spacing: 0.15em;
+        line-height: 1.5;
+        font-size: calc(13px + 0.666vw);
+      }
+
+      @font-face {
+        font-family: "JetBrainsMono";
+        src: url("./fonts/JetBrainsMono-Regular.woff2") format("woff2");
+        font-style: normal;
+        font-weight: 400;
+        font-display: swap;
+      }
+
+      @font-face {
+        font-family: "JetBrainsMono";
+        src: url("./fonts/JetBrainsMono-Italic.woff2") format("woff2");
+        font-style: italic;
+        font-weight: 400;
+        font-display: swap;
+      }
+
+      pre {
+        font-style: normal;
+        font-size: 15px !important;
+        line-height: 1.7 !important;
+        padding: 1.3em;
+        margin: 0 !important;
+        font-family: "JetBrainsMono", monospace !important;
+        overflow: scroll !important;
+        /* white-space: pre-wrap !important; */
+        background-color: rgba(255, 255, 255, 0.15);
+      }
+
+      code {
+        font-style: normal;
+        font-size: 13px;
+        font-family: "JetBrainsMono", monospace;
       }
 
       * {
